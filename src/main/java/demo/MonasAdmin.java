@@ -13,7 +13,7 @@ public class MonasAdmin {
         System.out.println(email + ":" + password);
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://admin.staging.dr-cex.sotatek.works/admin/site-setting");
+        driver.get("example-url");
         Thread.sleep(500);
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys(email);
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys(password);

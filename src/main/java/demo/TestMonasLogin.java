@@ -20,7 +20,7 @@ public class TestMonasLogin extends MonasAdmin {
     public IResponseApi getUrlApi(String email, String password) throws IOException, InterruptedException, ParseException {
         ILoginInput input = setUp(email, password);
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost httpGet = new HttpPost("https://api.staging.dr-cex.sotatek.works/admin/login");
+        HttpPost httpGet = new HttpPost("example-url");
         List<NameValuePair> params = new ArrayList<NameValuePair>(2);
         params.add(new BasicNameValuePair("email", input.getEmail()));
         params.add(new BasicNameValuePair("password", input.getPassword()));
@@ -35,7 +35,7 @@ public class TestMonasLogin extends MonasAdmin {
 
     @Test
     public void monasAdminLogin() throws IOException, ParseException, InterruptedException {
-        IResponseApi responseApi = getUrlApi("admin@monas.exchange", "123123");
+        IResponseApi responseApi = getUrlApi("example-email", "example-password");
         if (responseApi.getStatusCode() == 422) {
             Assert.fail("login false");
         } else {
@@ -45,7 +45,7 @@ public class TestMonasLogin extends MonasAdmin {
 
     @Test
     public void validateEmail() throws InterruptedException, IOException, ParseException {
-        IResponseApi responseApi  = getUrlApi("", "123123");
+        IResponseApi responseApi  = getUrlApi("", "example-password");
         if (!responseApi.getResponseMessage().contains("email.required") ) {
             Assert.fail("login false");
         } else {
